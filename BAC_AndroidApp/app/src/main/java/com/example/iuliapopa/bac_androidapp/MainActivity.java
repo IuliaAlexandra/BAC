@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://10.129.73.178:8080/ProiectBAC/numeElevi";
+        String url = "http://10.0.2.2:8080/ProiectBAC/numeElevi";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -98,21 +98,13 @@ public class MainActivity extends AppCompatActivity {
                                 listaElevi[i] = elevPojo.getNumeElev()+" "+  elevPojo.getPrenumeElev()+" "+ elevPojo.getInitialaTata();
                                 i++;
 
-                                ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this,
-                                        R.layout.simplerow, listaElevi);
-
-                                ListView listView = (ListView) findViewById(R.id.mainListView);
-                                listView.setAdapter(adapter);
-
-                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-                                    @Override
-                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                        Intent intent = new Intent(MainActivity.this,Date_Elev.class);
-                                        //based on item add info to intent
-                                        startActivity(intent);
-                                    }
-                                });
                             }
+                            ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this,
+                                    R.layout.simplerow, listaElevi);
+
+                            ListView listView = (ListView) findViewById(R.id.mainListView);
+                            listView.setAdapter(adapter);
+
 
                         } catch (IOException e) {
                             e.printStackTrace();
